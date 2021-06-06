@@ -1,6 +1,8 @@
-# game-of-life #
+# Game of Life #
 
-Welcome to game-of-life!
+Inspired by the [original Scala 2 implemenation](https://github.com/w11k/gameoflife), which I created eleven
+years ago, this is a simple and idiomatic Scala 3 implementation of the famous
+[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life). 
 
 ## Contribution policy ##
 
