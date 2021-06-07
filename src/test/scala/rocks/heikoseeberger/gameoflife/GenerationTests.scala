@@ -16,22 +16,21 @@
 
 package rocks.heikoseeberger.gameoflife
 
-final class Generation(val aliveCells: Set[Cell]):
+import munit.FunSuite
 
-  def next: Generation =
-    val stayingAlive =
-      aliveCells.filter(hasTwoOrThreeAliveNeighbours)
-    val wakingFromDead =
-      aliveCells
-        .flatMap(deadNeighbours)
-        .filter(aliveNeighbours(_).size == 3)
-    new Generation(stayingAlive ++ wakingFromDead)
+final class GenerationTests extends FunSuite:
 
-  private def hasTwoOrThreeAliveNeighbours(cell: Cell) =
-    2.to(3).contains(aliveNeighbours(cell).size)
+  test("empty") {
+    assertEquals(Generation(Set.empty).next.aliveCells, Set.empty)
+  }
 
-  private def aliveNeighbours(cell: Cell) =
-    cell.neighbours.filter(aliveCells.contains)
+  test("block") {
+    val block = Set(Cell(0, 0), Cell(1, 0), Cell(0, 1), Cell(1, 1))
+    assertEquals(Generation(block).next.aliveCells, block)
+  }
 
-  private def deadNeighbours(cell: Cell) =
-    cell.neighbours.filterNot(aliveCells.contains)
+  test("oscillator") {
+    val horizontalTriple = Set(Cell(-1, 0), Cell(0, 0), Cell(1, 0))
+    val verticalTriple   = Set(Cell(0, -1), Cell(0, 0), Cell(0, 1))
+    assertEquals(Generation(horizontalTriple).next.aliveCells, verticalTriple)
+  }
