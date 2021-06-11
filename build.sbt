@@ -33,9 +33,11 @@ lazy val `game-of-life` =
     .settings(commonSettings)
     .settings(
       libraryDependencies ++= Seq(
+        library.scalaSwing,
         library.munit           % Test,
         library.munitScalaCheck % Test,
       ),
+      run / fork := true,
     )
 
 // *****************************************************************************
@@ -58,8 +60,10 @@ lazy val commonSettings =
 lazy val library =
   new {
     object Version {
-      val munit = "0.7.26"
+      val munit      = "0.7.26"
+      val scalaSwing = "3.0.0"
     }
-    val munit           = "org.scalameta" %% "munit"            % Version.munit
-    val munitScalaCheck = "org.scalameta" %% "munit-scalacheck" % Version.munit
+    val scalaSwing      = "org.scala-lang.modules" %% "scala-swing"      % Version.scalaSwing
+    val munit           = "org.scalameta"          %% "munit"            % Version.munit
+    val munitScalaCheck = "org.scalameta"          %% "munit-scalacheck" % Version.munit
   }
