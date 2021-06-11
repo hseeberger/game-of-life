@@ -2,7 +2,17 @@
 
 Inspired by the [original Scala 2 implemenation](https://github.com/w11k/gameoflife), which I created eleven
 years ago, this is a simple and idiomatic Scala 3 implementation of the famous
-[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life). 
+[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
+
+## Run
+
+Install [sbt](https://www.scala-sbt.org/), e.g. via [Homebrew](https://brew.sh/).
+
+Then execute:
+
+``` bash
+sbt run 
+```
 
 ## Contribution policy ##
 
