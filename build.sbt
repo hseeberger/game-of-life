@@ -4,21 +4,23 @@
 
 inThisBuild(
   Seq(
-    organization := "rocks.heikoseeberger",
+    organization     := "rocks.heikoseeberger",
     organizationName := "Heiko Seeberger",
-    startYear := Some(2021),
+    startYear        := Some(2021),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
-    scalaVersion := "3.0.0",
+    scalaVersion := "3.0.1-RC2",
     scalacOptions ++= Seq(
       "-deprecation",
       "-unchecked",
       "-rewrite",
-      "-new-syntax",
+      "-indent",
+      "-pagewidth",
+      "100",
       "-Xfatal-warnings",
     ),
     testFrameworks += new TestFramework("munit.Framework"),
     scalafmtOnCompile := true,
-    dynverSeparator := "_", // the default `+` is not compatible with docker tags
+    dynverSeparator   := "_", // the default `+` is not compatible with docker tags
   )
 )
 
@@ -60,7 +62,7 @@ lazy val commonSettings =
 lazy val library =
   new {
     object Version {
-      val munit      = "0.7.26"
+      val munit      = "0.7.27"
       val scalaSwing = "3.0.0"
     }
     val scalaSwing      = "org.scala-lang.modules" %% "scala-swing"      % Version.scalaSwing
